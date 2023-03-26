@@ -1,0 +1,203 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Super Resume</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        div.header .item {
+            border: 1px solid black;
+            display: flex;
+            /* hmm.. the parent is already flex, why do we need this?*/
+            justify-content: center;
+            /* What is this doing?*/
+            align-items: center;
+            /* What is this doing?*/
+        }
+
+        div.header .item:nth-child(1) {
+            flex: 1 1 0;
+            /* flex-grow flex-shring flex-basis all in one.*/
+        }
+
+        div.header .item:nth-child(2),
+        div.header .item:nth-child(3) {
+            flex-direction: column;
+            /*What is the effect of this one?*/
+            flex: 2 1 0;
+            /* what does the first one being 2 has an effect?*/
+        }
+
+        div.logo img {
+            border-radius: 100%;
+            /*What does this do? If you remove what would happen?*/
+            border: 1px solid black;
+            width: 100px;
+        }
+
+        .main-container {
+            width: 98%;
+            /* is this the same as margin: auto?*/
+            /* margin-left: 1%*/
+            margin: auto;
+            /*What is the advantage of this?*/
+        }
+
+        .tools {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .experience {
+            display: flex;
+            justify-content: space-between;
+            /*difference between spce-around and space-between?*/
+        }
+
+        div.experience .hobby .table-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        div.experience .hobby .table-row .table-col:first-child {
+            min-width: 100px;
+            /*What does this do? If this is max-width what would happen?*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="item logo">
+                <img src="https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638__480.png" />
+            </div>
+            <div class="item bio">
+                <div>Firstname Lastname</div>
+                <div>Full stack developer</div>
+            </div>
+            <div class="item address">
+                <div>my-email-is@thepracticalit.com</div>
+                <div>(000)-000-0000</div>
+                <div>IG: @myInstaStuff</div>
+            </div>
+        </div>
+        <div class="about">
+
+        </div>
+        <div class="tools">
+            <div>
+                <div><b>Expert</b></div>
+                <ul>
+                    <li>html</li>
+                    <li>css</li>
+                    <li>javascript</li>
+                    <li>Visual Code Studio</li>
+                    <li>Problem Solving Skills</li>
+                    <li>git</li>
+                </ul>
+            </div>
+            <div>
+                <div><b>Familiar with</b></div>
+                <ul>
+                    <li>Post man</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Linux</li>
+                </ul>
+            </div>
+            <div>
+                <div><b>Picking up</b></div>
+                <ul>
+                    <li>AWS</li>
+                    <li>Artificial Intelligence</li>
+                </ul>
+            </div>
+        </div>
+        <div class="experience">
+            <div>
+                <div><h3>professional experience</h3></div>
+                <div>
+                    <div>Company One Tampa, Florida</div>
+                    <div>May 2020 - Present</div>
+                    <div>
+                        <div>Description of role</div>
+                        <p>As a web developer, I am responsible for an overview of pages, making sure
+                            app is running smooth and without bug
+                        </p>
+                        <p>Working with team to make sure feature and bugs are resolved on time.</p>
+                    </div>
+                    <div>
+                        <div>Responsibilities</div>
+                        <ul>
+                            <li>Attending and leading daily status meetings</li>
+                            <li>Participating in design meetings</li>
+                            <li>Converting sketches to real html pages.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div>Company Two Tampa, Florida</div>
+                    <div>June 2019 - May 2020</div>
+                    <div>
+                        <div>Description of role</div>
+                        <p>
+                            A junior web developer working anything between documentation and development
+                        </p>
+                    </div>
+                    <div>
+                        <div>Responsibilities</div>
+                        <ul>
+                            <li>Attending and leading daily status meetings</li>
+                            <li>Participating in design meetings</li>
+                            <li>Converting sketches to real html pages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hobby">
+                <div>
+                    <h3>extra activities</h3>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Prior profession</div>
+                    <div class="table-col detail">Mechanic, Teacher, Musician</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Engagements</div>
+                    <div class="table-col detail">Humanitarian, Environmental, Religion</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Hobbies</div>
+                    <div class="table-col detail">Walking, Cooking, Reading</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Community</div>
+                    <div class="table-col detail">Soccer Socity of USA, United Teachers Association</div>
+                </div>
+                <div>
+                    <h3>personal projects</h3>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Calorie Tracker</div>
+                    <div class="table-col detail">An app for tracking calories and suggestions  </div>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Alarm</div>
+                    <div class="table-col detail">Reminder on personal and professional todos</div>
+                </div>
+                <div class="table-row">
+                    <div class="table-col thead">Calendar</div>
+                    <div class="table-col detail">Optimized calendar for non-gregorian one.</div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
