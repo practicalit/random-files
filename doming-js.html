@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        .actions {
+            font-size: 14px;
+        }
+        .actions div a {
+            text-decoration: none;;
+        }
+        .find {
+            display: none;
+        }
+        .list {
+            display: none;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">JavaScript Club Members</h2>
+
+        <div class="row">
+            <div class="col">Current Members</div>
+            <div class="col">0</div>
+        </div>
+        <div class="mb-3">
+            <label for="member" class="form-label">New Member</label>
+            <input type="text" class="form-control" id="member" placeholder="First last">
+        </div>
+        <div>
+            <button id="addMember" class="btn btn-primary">Add New Member</button>
+        </div>  
+        <p>Can you implement the rest of the functionalities?</p>
+        <div class="row actions">
+            <div class="col"><a id="listMembers" href="">List Members</a></div>
+            <div class="col"><a id="findMember" href="">Find Member</a></div>
+            <div class="col"><a href="">Remove Member</a></div>
+            <div class="col"><a href="">Edit member</a></div>
+        </div>
+
+        <div class="find">
+            <div class="mb-3">
+                <label for="inputFind" class="form-label">Find Member</label>
+                <input type="text" class="form-control" id="inputFind" placeholder="name">
+            </div>
+            <div class="message"></div>
+        </div>
+        <div class="list">
+            <div class="members"></div>
+        </div>
+    </div>
+    <script>
+        const members = [];
+        const addMember = document.getElementById('addMember');//button
+        const newMember = document.querySelector('#member');//input box
+        
+        const find = document.querySelector('.find');
+        const inputFind = document.querySelector('#inputFind');
+        const message = document.querySelector('.message');
+        const listMembers = document.querySelector('#listMembers');
+
+        addMember.addEventListener('click', function(){
+            let theNewMemberName = newMember.value;
+            members.push(theNewMemberName);
+        });
+
+        document.querySelector("#findMember").addEventListener('click',
+            function(event) {
+                event.preventDefault();
+                find.style.display = "block";//why do we change it to block
+            }
+        );
+
+        inputFind.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                if (findUser(this.value)) {
+                    message.innerHTML = 'Found';
+                } else {
+                    message.innerHTML = 'Not Found';
+                }
+            }
+        });
+
+        listMembers.addEventListener('click', function(event){
+            event.preventDefault();
+            document.querySelector('.list').style.display = "block";
+            let listOfMembers = `<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">`;
+            for (let i=0; i < members.length; i++) {
+                listOfMembers =+ `
+    <li class="list-group-item">${members[i]}</li>`;
+            }
+            listOfMembers += `</ul></div>`;   
+            document.querySelector('.list .members').append(listOfMembers);      
+        });
+
+        function findUser(name) {
+            for(let i=0 ; i < members.length ; i++) {
+                if (members[i] == name) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>    
+</body>
+</html>
