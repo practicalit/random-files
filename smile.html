@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile - It helps</title>
+    <style>
+        .container {
+            width: 80%;
+            margin-left: 10%;
+        }
+        .header {
+            font-size: 26px;
+            color: green;
+            display: flex;
+            justify-content: center;
+        }
+        .joke {
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .setup {
+            font-style: italic;
+            color: brown
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Have your own sunshine - Just Smile :)
+        </div>
+        <div class="joke">
+            <div class="category"></div>
+            <div class="setup"></div>
+            <div class="delivery"></div>
+        </div>
+    </div>
+    <script>
+        //select the elements using document
+        const category = document.querySelector('.category');
+        const setup = document.querySelector('.setup');
+        const delivery = document.querySelector('.delivery');
+        //all-inclusive url. See that category can be programmed, and number of 
+        //jokes can be checked as well.
+        const url = 'https://v2.jokeapi.dev/joke/Programming,Misc?safe-mode&amount=1';
+        //automatically populate the joke
+        populateJoke();
+
+        /**
+         * getJokes function taking no parameters.
+         * getting the response from the the given URL
+         */
+        async function getJokes() {
+            const joke = {};
+            let response = await fetch(url);
+            response = await response.json();
+            console.log(response);
+            return response;
+        }
+
+        /**
+         * populate the joke to populate the HTML elemnets.
+         */
+        async function populateJoke() {
+            const response = await getJokes();
+            category.innerHTML = response.category;
+            if (response.type == "single") {
+                setup.innerHTML = response.joke;
+            } else {
+                setup.innerHTML = response.setup;
+                delivery.innerHTML = response.delivery;
+            }
+        }
+    </script>
+</body>
+</html>
